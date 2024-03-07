@@ -2,11 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
     <title>Ticket Booking</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <img src="banner.jpg" alt="Background Image" class="background-image">
     <header>
         <nav>
             <ul>
@@ -16,17 +20,47 @@
             </ul>
         </nav>
     </header>
-    <section id="book-ticket">
-        <!-- Form for booking ticket -->
-        <h1>Book Ticket</h1>
-        <form action="booking_details.html" method="post">
-            <!-- Form fields -->
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            <!-- Other form fields -->
-            <input type="submit" value="Submit">
-        </form>
+    <section class="content">
+        <div class="container">
+            <h2>Book Ticket</h2>
+            <form action="confirmation.html" method="post">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+
+                <label for="gender">Gender:</label>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label>
+      
+                <label for="source">From Destination:</label>
+                <select id="source" name="source" required>
+                    <option value="">Select From Destination</option>
+                    <option value="Aluva">Aluva</option>
+                    <option value="Vyttila">Vyttila</option>
+                    <option value="Kakkanad">Kakkanad</option>
+                </select>
+      
+                <label for="source">To Destination:</label>
+                <select id="destination" name="destination" required>
+                    <option value="">Select To Destination</option>
+                    <option value="Edappally">Edappally</option>
+                    <option value="Aluva">Aluva</option>
+                    <option value="Kakkanad">Kakkanad</option>
+                </select>
+      
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+      
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="submit">Submit</button>
+            </form>
+            
+        </div>
     </section>
+    <br>
+    <br>
     <footer>
         <p>&copy; 2024 Online Bus Ticket Booking</p>
     </footer>
