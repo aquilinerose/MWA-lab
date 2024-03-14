@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+    <script>
+        // Function to calculate the average grade
+        function calculateAverageGrade() {
+            // Prompt the user to enter the number of students
+            let numStudents = prompt("Enter the number of students:");
+
+            // Convert the input to a numeric value
+            numStudents = parseInt(numStudents);
+
+            // Validate the input
+            if (isNaN(numStudents) || numStudents <= 0) {
+                alert("Invalid input. Please enter a valid positive number of students.");
+                return; // Exit the function if the input is not a valid number
+            }
+
+            // Initialize variables
+            let totalGrades = 0;
+
+            // Loop to prompt for each student's grade
+            for (let i = 1; i <= numStudents; i++) {
+                let grade = parseFloat(prompt("Enter the grade for student " + i));
+
+                // Validate the input
+                if (isNaN(grade)) {
+                    alert("Invalid input. Please enter a valid numeric grade for student " + i);
+                    return; // Exit the function if the input is not a number
+                }
+
+                // Accumulate the grades
+                totalGrades += grade;
+            }
+
+            // Calculate the average grade
+            let averageGrade = totalGrades / numStudents;
+
+            // Display the results by appending to the body
+            document.body.innerHTML += "<h2>Grade Calculator Results</h2>";
+            document.body.innerHTML += "Number of Students: " + numStudents + "<br>";
+            document.body.innerHTML += "Total Grades: " + totalGrades + "<br>";
+            document.body.innerHTML += "Average Grade: " + averageGrade.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <script>
+        // Call the function when the page loads
+        calculateAverageGrade();
+    </script>
+</body>
+
+</html>
