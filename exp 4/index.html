@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Sum and Sort</title>
+    <script>
+        function findSum(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+
+        function bubbleSort(arr) {
+            let n = arr.length;
+            for (let i = 0; i < n - 1; i++) {
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+        }
+        function sumAndSort() {
+            let inputNumbers = document.getElementById('inputNumbers').value;
+            let numbers = inputNumbers.split(',').map(Number);
+
+            let sum = findSum(numbers);
+
+            bubbleSort(numbers);
+
+            let resultText = "Sum of the array: " + sum + "\nSorted Array: " + numbers.join(', ');
+            document.getElementById('result').innerHTML = resultText;
+
+            alert(resultText);
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Array Sum and Sort</h2>
+    <form>
+        <label for="inputNumbers">Enter numbers (comma-separated):</label>
+        <input type="text" id="inputNumbers" name="inputNumbers">
+        <button type="button" onclick="sumAndSort()">Calculate</button>
+    </form>
+    <div id="result"></div>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+GRADES
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <script>
+        // Function to calculate grades and average grade
+        function calculateGrades() {
+            const numberOfStudents = parseInt(prompt("Enter the number of students:"));
+            const grades = [];
+
+            // Loop through each student to get their grade
+            for (let i = 1; i <= numberOfStudents; i++) {
+                const studentGrade = parseFloat(prompt("Enter the grade for student " + i + ":"));
+                grades.push(studentGrade);
+            }
+
+            // Calculate the average grade
+            const totalGrade = grades.reduce((acc, curr) => acc + curr, 0);
+            const averageGrade = totalGrade / numberOfStudents;
+
+            // Display the output
+            document.write("<h2>Grades of Students:</h2>");
+            document.write("<ul>");
+            for (let i = 0; i < numberOfStudents; i++) {
+                document.write("<li>Student " + (i + 1) + ": " + grades[i] + "</li>");
+            }
+            document.write("</ul>");
+            document.write("<h2>Average Grade of the Class:</h2>");
+            document.write("<p>The average grade of the class is: " + averageGrade.toFixed(2) + "</p>");
+        }
+
+        // Call the function to execute the program
+        calculateGrades();
+    </script>
+</body>
+</html>
+
+SUMANDSORT
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Program</title>
+</head>
+<body>
+    <script>
+        // Function to find the sum of an array
+        function findSum(arr) {
+            let sum = 0;
+            for (let i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+            return sum;
+        }
+
+        // Function to sort an array using Bubble Sort
+        function bubbleSort(arr) {
+            const len = arr.length;
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len - 1 - i; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+
+
+
+        
+
+        // Prompting the user for array size
+        const size = parseInt(prompt("Enter the size of the array:"));
+
+        // Initializing an empty array to store user input elements
+        const userArray = [];
+
+        // Prompting the user for array elements
+        for (let i = 0; i < size; i++) {
+            const element = parseInt(prompt("Enter element " + (i + 1) + " of " + size + ":"));
+            userArray.push(element);
+        }
+
+        // Calculating the sum of the array
+        const sum = findSum(userArray);
+        alert("Sum of the array is: " + sum);
+
+        // Sorting the array using Bubble Sort
+        const sortedArray = bubbleSort(userArray.slice()); // Pass a copy of the array to not modify the original array
+        alert("Sorted array using Bubble Sort: " + sortedArray.join(', '));
+    </script>
+</body>
+</html>
