@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>javaScript</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+        <script>
+            function sumsort()
+            {
+                let size=parseInt(prompt("Enter the size of the array: "));
+                var arr=[], sorted= [], sum=0, temp;
+                for(let i=0; i<size; i++)
+                {
+                    arr.push(+prompt("Enter element" + (i+1) + ": "));
+                    sorted[i]=arr[i];
+                    sum+=arr[i];
+                }
+                for(let i=0; i<size; i++)
+                {
+                    for(let j=0; j<size-i-1;j++)
+                    {
+                        if(sorted[j]>sorted[j+1])
+                        {
+                            temp=sorted[j];
+                            sorted[j]=sorted[j+1];
+                            sorted[j+1]=temp;
+                        }
+                    }
+                }
+                alert('Given array: '+arr.join(', ')+"\n\nSum of elements: "+sum+"\nSorted array: "+sorted.join(', '));
+            }
+            function grades()
+            {
+                let studsize= parseInt(prompt("Enter the number of students: "));
+                let subsize= parseInt(prompt("Enter the number of subjects: "));
+                let classSumMarks=0, classSumGrade=0;
+                let output= "<h3>Grades: <\h3>";
+                for(i=1; i<=studsize; i++)
+                {
+                    let sumstudmark=0;
+                    output+= "<h4>Student " +i+ ": </h4><br>";
+                    for(j=1; j<=subsize; j++)
+                    {
+                        grade= parseFloat(prompt("Enter grade of Student "+i+" for subject "+j+" : "));
+                        sumstudmark+= grade;
+                        output+= "<br>Suject "+j+ ": "+grade+"<br>";
+                    }
+                    let studavgmark= sumstudmark/subsize;
+                    let gradeletter= calculategradeletter(studavgmark);
+                    classSumMarks+=studavgmark;
+                    classSumGrade+= gradeletter.charCodeAt(0);
+                    output+= "<br><strong>Student Average Marks: </strong>"+studavgmark.toFixed(2);
+                    output+= "<br><strong>Student Grade: </strong>"+gradeletter;
+                }
+                let classavgmarks = classSumMarks/studsize;
+                let classavggrade= String.fromCharCode(Math.round(classSumGrade/studsize))
+                output += "<br>Class Average Mark: </h3><p>"+classavgmarks.toFixed(2);
+                output += "<br>Class Average Grade: </h3><p>"+classavggrade;
+                document.getElementById("gradeoutput").innerHTML= output; 
+            }
+            function calculategradeletter(average)
+            {
+                if(average>=90)
+                {
+                    return "A+";
+                }
+                else if(average>=80)
+                {
+                    return "A";
+                }
+                else if(average>=70)
+                {
+                    return "B";
+                }
+                else if(average>=60)
+                {
+                    return "C";
+                }
+                else if(average>=50)
+                {
+                    return "D";
+                }
+                else if(average>=40)
+                {
+                    return "E";
+                }
+                else
+                {
+                    return "F";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Sort the elements of an array and find sum: </h3>
+        <button onclick="sumsort()">Calculate sum and sort array</button>
+        <h3>Calculate grade:</h3>
+        <button onclick="grades()">Calculate Grade</button>
+        <div id="gradeoutput" style="text-align: justify;"></div>
+    </body>
+</html>
