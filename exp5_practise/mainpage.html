@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>form validation</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <form action="confirmation.html">
+            <h2>Registration Form</h2>
+            <table>
+                <tr>
+                    <td>User id:</td>
+                    <td><input type="text" id="userid" name="userid" ></td>
+                </tr>
+                <tr>
+                    <td>Password: </td>
+                    <td><input type="password" id="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" id="address" name="address"></td>
+                </tr>
+                <tr>
+                    <td>Country: </td>
+                    <td>
+                        <select id="country" name="country">
+                            <option value="India">India</option>
+                            <option value="Australia">Australia</option>
+                            <option value="Canada">Canada</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zip Code: </td>
+                    <td><input type="text" id="zipcode" name="zipcode"></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input type="text" id="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td>Sex: </td>
+                    <td>
+                        <input type="radio" id="male" name="sex" value="male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="sex" value="female">
+                        <label for="female">Female</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Language: </td>
+                    <td>
+                        <input type="checkbox" id="english" name="language" value="english">
+                        <label for="english">Male</label>
+                        <input type="checkbox" id="non-english" name="language" value="non-english">
+                        <label for="non-english">Non-English</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>About: </td>
+                    <td>
+                        <textarea id="about" name="about" rows="4" cols="50"></textarea>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </body>
+    <script>
+        function validateuserid(userid){
+            if(!userid){
+                alert("Please fill out your user id.");
+                return false;
+            }
+            else if(userid.length<5 || userid.lenght>22){
+                alert("User id should be more than 22 and less than 5")
+                return false;
+            }
+            return true;
+        }
+        function validatepassword(password){
+            if(!password){
+                alert("Please enter the password");
+                return false;
+            }
+            else if(password.lenght<5 || password.lenght>22){
+                alert("Password lenght should be more than 5 characters and less than 22 characters");
+                return false;
+            }
+            return true;
+        }
+        function validatecountry(country) {
+            if (!country) {
+            alert('Please select your country.');
+            return false;
+            }
+            return true;
+        }
+        function validatezipcode(zipCode) {
+            if (!zipCode) {
+                alert('Please fill out your zip code.');
+                return false;
+            } else if (!/^\d+$/.test(zipCode)) {
+                alert('Your zip code must only contain digits.');
+                return false;
+            }
+            return true;
+        }
+        function validateemail(email) {
+            if (!email) {
+                alert('Please fill out your email.');
+                return false;
+            } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                alert('Please enter a valid email address.');
+                return false;
+            }
+            return true;
+        }
+        function validatesex(sex) {
+            if (!sex) {
+                alert('Please select yor sex');
+                return false;
+            }
+            return true;
+        }
+
+        function validatelanguage(language) {
+            if (!language) {
+                alert('Please select yor language');
+                return false;
+            }
+            return true;
+        }
+
+        document.querySelector('form').addEventListener('submit', function(event){
+            var userid= document.getElementById('userid').value;
+            var password= document.getElementById('password').value;
+            var address = document.getElementById('address').value;
+            var country = document.getElementById('country').value;
+            var zipCode = document.getElementById('zipcode').value;
+            var email = document.getElementById('email').value;
+            var sex = document.querySelector('input[name="sex"]:checked');
+            var language = document.querySelector('input[name="language"]:checked');
+            var about = document.getElementById('about').value;
+
+            if (!validateuserid(userid) ||
+            !validatepassword(password) ||
+            !validatecountry(country) ||
+            !validatezipcode(zipCode) ||
+            !validateemail(email) ||
+            !validatesex(sex) ||
+            !validatelanguage(language)){
+                event.preventDefault();
+            }
+
+        });
+    </script>
+</html>

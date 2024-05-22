@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Content Loader</title>
+    <!-- Include jQuery from CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .content {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Dropdown Content Loader</h1>
+    
+    <label for="contentSelect">Choose an option:</label>
+    <select id="contentSelect">
+        <option value="">--Select an option--</option>
+        <option value="content1">Content 1</option>
+        <option value="content2">Content 2</option>
+        <option value="content3">Content 3</option>
+    </select>
+    
+    <div id="content" class="content">
+        Please select an option from the dropdown to load content here.
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#contentSelect').change(function(){
+                var selectedValue = $(this).val();
+                if(selectedValue) {
+                    // Using $.ajax to load the content
+                    $.ajax({
+                        url: selectedValue + '.html',
+                        method: 'GET',
+                        success: function(data) {
+                            $('#content').html(data);
+                        },
+                        error: function() {
+                            $('#content').html('Error loading content. Please try again.');
+                        }
+                    });
+                } else {
+                    $('#content').html('Please select an option from the dropdown to load content here.');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
